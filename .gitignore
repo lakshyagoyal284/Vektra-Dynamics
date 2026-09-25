@@ -1,0 +1,23 @@
+node_modules
+.next
+out
+build
+dist
+
+dev-server.log
+scripts/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
+.env*.local
+
+.vercel
+*.tsbuildinfo
+.DS_Store
+
+# service account key — never commit
+vektralead.json
+*.json.key
