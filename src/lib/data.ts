@@ -193,6 +193,104 @@ export const SCALE_NEEDS: readonly EstimatorChoice<ScaleOption>[] = [
 // Base in INR — entry combination (Web App + Express + Local) prices at this figure.
 export const BASE_ESTIMATE = 35000;
 
+/* ------------------------------- packages -------------------------------- */
+// Fixed-scope service packages offered for instant order on /instant-buy.
+// Prices are "from" figures in INR — final scope is confirmed on the discovery call.
+
+export interface Package {
+  readonly id: string;
+  readonly name: string;
+  readonly tagline: string;
+  readonly priceFrom: number;
+  readonly priceLabel: string;
+  readonly timeline: string;
+  readonly summary: string;
+  readonly includes: readonly string[];
+  readonly popular: boolean;
+}
+
+export const PACKAGES: readonly Package[] = [
+  {
+    id: "starter-website",
+    name: "Starter Website",
+    tagline: "Marketing site, shipped fast",
+    priceFrom: 35000,
+    priceLabel: "₹35,000",
+    timeline: "2 weeks",
+    summary:
+      "A fast, mobile-first site for a new business or a rebrand — the right foundation without the full build.",
+    includes: [
+      "Up to 6 pages, mobile-first",
+      "Next.js + TypeScript build",
+      "Contact form wired to your inbox",
+      "Basic on-page SEO & analytics",
+      "One round of revisions",
+    ],
+    popular: false,
+  },
+  {
+    id: "business-platform",
+    name: "Business Platform",
+    tagline: "Portals, dashboards, real product surface",
+    priceFrom: 85000,
+    priceLabel: "₹85,000",
+    timeline: "4–6 weeks",
+    summary:
+      "A multi-page platform with authentication and data — built for teams whose work now lives in the product.",
+    includes: [
+      "Everything in Starter",
+      "Auth & role-based access",
+      "Admin dashboard",
+      "Database schema & API layer",
+      "Testing & deployment pipeline",
+    ],
+    popular: true,
+  },
+  {
+    id: "ai-integration",
+    name: "AI Integration",
+    tagline: "LLM workflows, grounded in your data",
+    priceFrom: 150000,
+    priceLabel: "₹1,50,000",
+    timeline: "4–6 weeks",
+    summary:
+      "Production-grade AI inside your operations — retrieval, orchestration, and guardrails, not a demo.",
+    includes: [
+      "LLM workflow orchestration",
+      "Retrieval over your documents",
+      "Guardrails & fallback paths",
+      "Evaluation harness",
+      "Usage & cost monitoring",
+    ],
+    popular: false,
+  },
+  {
+    id: "custom-system",
+    name: "Custom System",
+    tagline: "Bespoke platform or internal tooling",
+    priceFrom: 250000,
+    priceLabel: "₹2,50,000",
+    timeline: "Enterprise quarter",
+    summary:
+      "A system designed around how your organisation actually works — phased delivery with a dedicated squad.",
+    includes: [
+      "Architecture & discovery phase",
+      "Dedicated engineering squad",
+      "Multi-phase delivery plan",
+      "Infrastructure & observability",
+      "Documentation & handover",
+    ],
+    popular: false,
+  },
+];
+
+export const ORDER_SOURCES = [
+  { id: "web-app", label: "Web Application" },
+  { id: "full-stack-saas", label: "Full-Stack SaaS" },
+  { id: "ai-integration", label: "AI Integration" },
+  { id: "custom-system", label: "Custom System" },
+] as const;
+
 /* ------------------------------ case studies ------------------------------ */
 
 export type CaseTag = "web" | "aiml" | "cloud";
