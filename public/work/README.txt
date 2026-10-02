@@ -8,7 +8,7 @@ labelled placeholder so the page never looks broken. Drop the files below into
 
 | Path | Notes |
 | --- | --- |
-| `public/hero-studio.webp` | Portrait, roughly 4:5 or 3:4. Your workspace, a system diagram, or an abstract render. |
+| `public/hero-studio.png` | **Done.** Vektra Foundation Core v1.0 render (397 × 447).
 
 ## Services — one per service row
 

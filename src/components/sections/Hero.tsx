@@ -153,9 +153,9 @@ export default function Hero() {
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden border border-line bg-surface-mid shadow-panel sm:aspect-[3/4]">
               <SmartImage
-                src="/hero-studio.webp"
-                alt="Vektra Dynamics engineering workspace"
-                label="hero-studio.webp"
+                src="/hero-studio.png"
+                alt="Vektra Foundation Core v1.0 — the studio's compute platform"
+                label="hero-studio.png"
                 sizes="(max-width: 1024px) 90vw, 420px"
                 priority
               />
