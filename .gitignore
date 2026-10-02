@@ -21,3 +21,6 @@ yarn-error.log*
 # service account key — never commit
 vektralead.json
 *.json.key
+
+# standalone Kage export (source copy lives at project root)
+Landing.html
