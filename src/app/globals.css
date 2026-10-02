@@ -51,6 +51,59 @@
 }
 
 @layer utilities {
+  /* Section bands alternate tonal steps so the page has vertical rhythm
+     instead of repeating one card treatment seven times. */
+  .band-deep {
+    background-color: #07080a;
+  }
+  .band-mid {
+    background-color: #0b0c0e;
+  }
+  .band-high {
+    background-color: #101114;
+  }
+
+  /* Hairline that fades at both ends — used to separate bands without
+     drawing a hard rule across the full width. */
+  .rule-fade-x {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(155, 161, 172, 0.22) 18%,
+      rgba(155, 161, 172, 0.22) 82%,
+      transparent
+    );
+  }
+
+  /* Uppercase label used for section eyebrows and stat captions. */
+  .eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+  }
+
+  /* Image slot that keeps its box when the asset is absent. */
+  .img-slot {
+    position: relative;
+    overflow: hidden;
+    background: #0e1014;
+  }
+  .img-slot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to top,
+      rgba(7, 8, 10, 0.9) 0%,
+      rgba(7, 8, 10, 0.15) 45%,
+      transparent 100%
+    );
+  }
+
   .link-underline {
     position: relative;
   }
@@ -74,6 +127,18 @@
   .rocket-particle {
     opacity: 0;
     animation: rocket-thrust 1.2s ease-out infinite;
+  }
+
+  /* Respect users who have asked the OS to reduce motion. */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-drift,
+    .animate-pulse-dot,
+    .animate-marquee,
+    .animate-shimmer,
+    .rocket-particle,
+    .rocket-flame {
+      animation: none !important;
+    }
   }
 
   .rocket-flame {

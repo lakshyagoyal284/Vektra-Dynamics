@@ -6,8 +6,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+    <footer className="band-deep border-t border-line">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
           {/* brand */}
           <div>
@@ -16,9 +16,15 @@ export default function Footer() {
               alt="Vektra Dynamics"
               className="h-8 w-auto"
             />
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+            <p className="mt-4 max-w-xs font-display text-lg leading-snug tracking-tight text-ink/90">
               Engineered digital systems. Built for scale.
             </p>
+            <a
+              href="/instant-buy"
+              className="mt-6 inline-flex items-center gap-2 border border-line px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan"
+            >
+              Instant Buy Order
+            </a>
             <p className="mt-6 inline-flex items-center gap-2 text-[13px] text-muted">
               <span
                 className="h-1.5 w-1.5 rounded-full bg-emerald-400"

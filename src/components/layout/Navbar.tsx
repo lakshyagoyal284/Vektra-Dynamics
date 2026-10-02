@@ -27,8 +27,8 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "border-b border-line bg-obsidian/90 backdrop-blur"
-          : "border-b border-transparent"
+          ? "border-b border-line bg-surface-deep/85 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav
@@ -58,12 +58,18 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href={onHome ? "#contact" : "/#contact"}
-            className="hidden border border-ink/20 bg-ink px-4 py-2 text-sm font-medium text-obsidian transition-colors hover:border-accent-cyan hover:bg-accent-cyan md:inline-flex"
-          >
-            Start a project
-          </a>
+        <a
+          href="/instant-buy"
+          className="hidden border border-lineStrong px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan md:inline-flex"
+        >
+          Order
+        </a>
+        <a
+          href={onHome ? "#contact" : "/#contact"}
+          className="hidden bg-ink px-4 py-2 text-sm font-medium text-obsidian transition-colors hover:bg-accent-cyan md:inline-flex"
+        >
+          Start a project
+        </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -96,7 +102,7 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="block border-b border-line/60 py-3.5 text-sm text-muted last:border-0"
+                      className="block border-b border-line/60 py-3.5 text-sm text-muted transition-colors last:border-0 hover:text-ink"
                     >
                       {link.label}
                     </a>
@@ -104,9 +110,18 @@ export default function Navbar() {
                 ))}
                 <li className="pt-2">
                   <a
+                    href="/instant-buy"
+                    onClick={() => setOpen(false)}
+                    className="block border border-lineStrong px-4 py-2.5 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-muted"
+                  >
+                    Instant Buy Order
+                  </a>
+                </li>
+                <li className="pt-2">
+                  <a
                     href={onHome ? "#contact" : "/#contact"}
                     onClick={() => setOpen(false)}
-                    className="block border border-ink/20 bg-ink px-4 py-2.5 text-center text-sm font-medium text-obsidian"
+                    className="block bg-ink px-4 py-2.5 text-center text-sm font-medium text-obsidian"
                   >
                     Start a project
                   </a>

@@ -133,13 +133,13 @@ export default function Estimator() {
   return (
     <section
       id="estimator"
-      className="relative scroll-mt-24 overflow-hidden border-t border-line py-24 sm:py-32"
+      className="band-high relative isolate scroll-mt-24 overflow-hidden border-t border-line py-24 sm:py-32"
     >
-      {/* ambient light behind the panel */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-28 h-[380px] w-[720px] -translate-x-1/2 rounded-full bg-accent-indigo/[0.07] blur-[130px]"
-      />
+      {/* ambient light + grid behind the panel */}
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div className="absolute inset-0 bg-grid-faint bg-grid [mask-image:radial-gradient(ellipse_50%_40%_at_50%_30%,black,transparent)]" />
+        <div className="absolute left-1/2 top-28 h-[380px] w-[720px] -translate-x-1/2 rounded-full bg-accent-indigo/[0.09] blur-[130px]" />
+      </div>
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
@@ -149,8 +149,8 @@ export default function Estimator() {
           description="Three questions, thirty seconds. You'll get an indicative range — enough to know if we fit your budget before a call."
         />
 
-        <Reveal className="mt-14">
-          <div className="relative border border-line bg-surface/40 shadow-card">
+        <Reveal className="mt-16">
+          <div className="relative border border-line bg-surface-mid/85 shadow-panel backdrop-blur">
             {/* top accent line */}
             <span
               aria-hidden="true"
@@ -294,7 +294,7 @@ export default function Estimator() {
               {/* summary */}
               <aside
                 aria-label="Scope summary"
-                className="relative border-t border-line bg-obsidian/80 p-6 sm:p-10 lg:border-l lg:border-t-0"
+                className="relative border-t border-line bg-surface-deep/80 p-6 sm:p-10 lg:border-l lg:border-t-0"
               >
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
                   Scope summary

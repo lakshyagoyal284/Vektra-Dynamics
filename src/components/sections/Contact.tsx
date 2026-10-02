@@ -140,12 +140,11 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 overflow-hidden border-t border-line py-24 sm:py-32"
+      className="band-mid relative isolate scroll-mt-24 overflow-hidden border-t border-line py-24 sm:py-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-24 h-[360px] w-[680px] -translate-x-1/2 rounded-full bg-accent-cyan/[0.06] blur-[130px]"
-      />
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <div className="absolute left-1/2 top-24 h-[360px] w-[680px] -translate-x-1/2 rounded-full bg-accent-cyan/[0.08] blur-[130px]" />
+      </div>
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
@@ -155,10 +154,10 @@ export default function Contact() {
           description="A senior engineer reads every inquiry — not a sales team. Expect a reply within one business day."
         />
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="mt-16 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           {/* left: what happens next */}
           <Reveal>
-            <div className="relative flex h-full flex-col border border-line bg-surface/40 shadow-card">
+            <div className="relative flex h-full flex-col border border-line bg-surface-high shadow-panel">
               <span
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/70 to-transparent"
@@ -207,7 +206,7 @@ export default function Contact() {
 
           {/* right: form */}
           <Reveal delay={0.1}>
-            <div className="relative h-full border border-line bg-surface/40 p-7 shadow-card sm:p-10">
+            <div className="relative h-full border border-line bg-surface-high p-7 shadow-panel sm:p-10">
               <AnimatePresence mode="wait">
                 {status === "success" ? (
                   <motion.div

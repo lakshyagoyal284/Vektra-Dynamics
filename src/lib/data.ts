@@ -393,6 +393,47 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
   },
 ];
 
+/* ------------------------------ architecture ------------------------------ */
+
+export interface Layer {
+  readonly id: string;
+  readonly tag: string;
+  readonly title: string;
+  readonly meta: string;
+  readonly detail: string;
+}
+
+export const LAYERS: readonly Layer[] = [
+  {
+    id: "edge",
+    tag: "L0",
+    title: "Edge",
+    meta: "CDN · Middleware · WAF",
+    detail: "Request shaping, auth gates, and geo-routing across 34 regions.",
+  },
+  {
+    id: "app",
+    tag: "L1",
+    title: "Application",
+    meta: "RSC · API Routes · tRPC",
+    detail: "Server components and typed contracts — data travels once, compressed.",
+  },
+  {
+    id: "data",
+    tag: "L2",
+    title: "Data",
+    meta: "PostgreSQL · Redis · Queues",
+    detail: "Schemas tuned for read/write throughput, caches with explicit invalidation.",
+  },
+  {
+    id: "ai",
+    tag: "L3",
+    title: "AI",
+    meta: "LLM · Vector · Evals",
+    detail: "Retrieval and orchestration layers — designed now, activated when you're ready.",
+  },
+];
+
 /* --------------------------------- about ---------------------------------- */
 
 export const FOUNDER = {
