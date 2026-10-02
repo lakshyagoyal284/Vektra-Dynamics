@@ -10,7 +10,7 @@ import { SERVICES } from "@/lib/data";
 
 const IMAGES: Record<string, string> = {
   "web-engineering": "/work/web-platform.png",
-  "custom-software": "/work/custom-systems.webp",
+  "custom-software": "/work/custom-systems.png",
   "ai-integration": "/work/ai-integration.webp",
   "design-systems": "/work/design-systems.webp",
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface SmartImageProps {
@@ -15,12 +15,19 @@ interface SmartImageProps {
   label?: string;
 }
 
+type Status = "checking" | "ready" | "missing";
+
 /**
  * Image that keeps its layout box when the asset is absent.
  *
  * The site ships with placeholder slots: drop the file at the given path under
  * /public and it appears with no code change. Until then a labelled slot shows
  * so the layout is honest about what is missing rather than collapsing.
+ *
+ * Existence is probed with a plain <img> before next/image is used. next/image
+ * throws inside its optimizer when the source file is missing, and onError does
+ * not catch it — the request never becomes an <img> event. Probing first keeps
+ * absent slots from filling the console with optimizer errors.
  */
 export default function SmartImage({
   src,
@@ -30,9 +37,27 @@ export default function SmartImage({
   priority = false,
   label,
 }: SmartImageProps) {
-  const [failed, setFailed] = useState(false);
+  const [status, setStatus] = useState<Status>("checking");
 
-  if (failed) {
+  useEffect(() => {
+    let cancelled = false;
+    setStatus("checking");
+
+    // GlobalThis.Image is the DOM constructor — distinct from the next/image
+    // component imported above.
+    const probe = new window.Image();
+    probe.onload = () => !cancelled && setStatus("ready");
+    probe.onerror = () => !cancelled && setStatus("missing");
+    probe.src = src;
+
+    return () => {
+      cancelled = true;
+      probe.onload = null;
+      probe.onerror = null;
+    };
+  }, [src]);
+
+  if (status !== "ready") {
     return (
       <div
         // h-full/w-full keeps the placeholder the same size as the real image,
@@ -41,11 +66,14 @@ export default function SmartImage({
           className ?? ""
         }`}
         role="img"
-        aria-label={alt}
+        aria-label={status === "missing" ? alt : ""}
+        aria-hidden={status === "checking" ? true : undefined}
       >
-        <span className="eyebrow relative z-10 text-center leading-relaxed text-muted/45">
-          {label ?? alt}
-        </span>
+        {status === "missing" && (
+          <span className="eyebrow relative z-10 text-center leading-relaxed text-muted/45">
+            {label ?? alt}
+          </span>
+        )}
       </div>
     );
   }
@@ -57,7 +85,6 @@ export default function SmartImage({
       fill
       sizes={sizes}
       priority={priority}
-      onError={() => setFailed(true)}
       className={`img-slot object-cover ${className ?? ""}`}
     />
   );
