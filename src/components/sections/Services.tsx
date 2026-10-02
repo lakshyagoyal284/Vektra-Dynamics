@@ -9,7 +9,7 @@ import SmartImage from "@/components/ui/SmartImage";
 import { SERVICES } from "@/lib/data";
 
 const IMAGES: Record<string, string> = {
-  "web-engineering": "/work/web-platform.webp",
+  "web-engineering": "/work/web-platform.png",
   "custom-software": "/work/custom-systems.webp",
   "ai-integration": "/work/ai-integration.webp",
   "design-systems": "/work/design-systems.webp",
@@ -50,15 +50,17 @@ export default function Services() {
                     }`}
                   />
 
-                  <div className="grid md:grid-cols-[280px_1fr]">
-                    {/* image rail — collapses away on small screens */}
-                    <div className="relative hidden md:block">
-                      <div className="relative h-full min-h-[220px] w-full overflow-hidden border-r border-line">
+                  <div className="grid md:grid-cols-[380px_1fr]">
+                    {/* image rail — collapses away on small screens.
+                        The border runs the full row height; the landscape
+                        frame sits centred inside it. */}
+                    <div className="relative hidden border-r border-line md:flex md:items-center">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden">
                         <SmartImage
                           src={IMAGES[service.id]}
                           alt={`${service.title} — representative work`}
                           label={service.id}
-                          sizes="280px"
+                          sizes="(max-width: 768px) 0px, 380px"
                         />
                       </div>
                     </div>
