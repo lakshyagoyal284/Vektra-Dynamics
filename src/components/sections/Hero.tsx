@@ -151,12 +151,14 @@ export default function Hero() {
             transition={{ type: "spring", stiffness: 70, damping: 22, delay: 0.15 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] w-full overflow-hidden border border-line bg-surface-mid shadow-panel sm:aspect-[3/4]">
+            {/* Landscape frame — the source photo is ~1.9:1, so a portrait
+                crop would cut both people out of the shot. */}
+            <div className="relative aspect-[16/10] w-full overflow-hidden border border-line bg-surface-mid shadow-panel">
               <SmartImage
                 src="/hero-studio.png"
-                alt="Vektra Foundation Core v1.0 — the studio's compute platform"
+                alt="Two engineers reviewing a build together at a workstation"
                 label="hero-studio.png"
-                sizes="(max-width: 1024px) 90vw, 420px"
+                sizes="(max-width: 1024px) 92vw, 460px"
                 priority
               />
               {/* corner ticks — technical framing */}

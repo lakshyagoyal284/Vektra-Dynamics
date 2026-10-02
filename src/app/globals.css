@@ -91,7 +91,10 @@
     overflow: hidden;
     background: #0e1014;
   }
-  .img-slot::after {
+
+  /* Opt-in bottom scrim, only for slots with text overlaid on the image.
+     Left off by default so photos keep their original brightness. */
+  .img-slot-scrim::after {
     content: "";
     position: absolute;
     inset: 0;
