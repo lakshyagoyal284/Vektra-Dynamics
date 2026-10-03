@@ -17,7 +17,7 @@ labelled placeholder so the page never looks broken. Drop the files below into
 | `public/work/web-platform.png` | Web Engineering & Architecture |
 | `public/work/custom-systems.png` | Custom Software & Systems |
 | `public/work/ai-integration.png` | Intelligent Automation & AI Integration |
-| `public/work/design-systems.webp` | UI/UX Design Systems |
+| `public/work/design-systems.png` | UI/UX Design Systems |
 
 Displayed in a tall left-hand rail, so portrait or square crops work best.
 Minimum 560 × 720.
