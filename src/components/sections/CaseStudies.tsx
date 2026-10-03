@@ -13,10 +13,6 @@ type Filter = CaseTag | "all";
    to the documented .webp slot, which SmartImage renders as a placeholder. */
 const CASE_IMAGES: Record<string, string> = {
   diptis: "/work/case-diptis.png",
-  helios: "/work/case-helios.png",
-  atlas: "/work/case-atlas.png",
-  nordwind: "/work/case-nordwind.png",
-  quantum: "/work/case-quantum.png",
 };
 
 export default function CaseStudies() {
