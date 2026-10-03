@@ -143,7 +143,18 @@ export default function CaseGallery({
                 // each frame whole instead of cropping into them.
                 width={1920}
                 height={1080}
-                sizes="(max-width: 1024px) 92vw, 1024px"
+                // These are UI screenshots — flat fills and small type — which
+                // is the worst case for the optimizer's default lossy WebP at
+                // quality 75. Small text turns to mush. Raise it; the extra
+                // bytes buy legibility, and a screenshot that can't be read
+                // is not worth optimising.
+                quality={92}
+                // Mirrors the stage's real box: px-4 gutter under 640px,
+                // px-16 (4rem) either side above it, capped at max-w-5xl
+                // (1024px) once the viewport passes ~1152px. The old value
+                // overstated this and made the browser ask for widths the
+                // source files do not contain, upscaling them.
+                sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1152px) calc(100vw - 8rem), 1024px"
                 priority={index === 0}
                 className="max-h-full max-w-full object-contain"
               />
