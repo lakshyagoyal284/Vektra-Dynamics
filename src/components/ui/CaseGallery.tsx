@@ -126,40 +126,48 @@ export default function CaseGallery({
           <ChevronLeft className="h-5 w-5" aria-hidden="true" />
         </button>
 
-        <div className="relative flex h-full max-h-full w-full max-w-5xl items-center justify-center">
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              key={images[index]}
-              className="relative flex h-full max-h-full w-full items-center justify-center"
-              initial={reduce ? false : { opacity: 0, scale: 0.985 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.99 }}
-              transition={{ duration: reduce ? 0 : 0.22, ease: "easeOut" }}
-            >
-              <Image
-                src={images[index]}
-                alt={`${title} — screenshot ${index + 1} of ${count}`}
-                // The screenshots have mixed aspect ratios, so contain keeps
-                // each frame whole instead of cropping into them.
-                width={1920}
-                height={1080}
-                // These are UI screenshots — flat fills and small type — which
-                // is the worst case for the optimizer's default lossy WebP at
-                // quality 75. Small text turns to mush. Raise it; the extra
-                // bytes buy legibility, and a screenshot that can't be read
-                // is not worth optimising.
-                quality={92}
-                // Mirrors the stage's real box: px-4 gutter under 640px,
-                // px-16 (4rem) either side above it, capped at max-w-5xl
-                // (1024px) once the viewport passes ~1152px. The old value
-                // overstated this and made the browser ask for widths the
-                // source files do not contain, upscaling them.
-                sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1152px) calc(100vw - 8rem), 1024px"
-                priority={index === 0}
-                className="max-h-full max-w-full object-contain"
-              />
-            </motion.div>
-          </AnimatePresence>
+        <div className="relative w-full max-w-4xl border border-line bg-surface-deep/40 p-2 sm:p-3">
+          {/* Fixed 16:10 frame. The screenshots run from 1.52 to 2.09, so
+              without a constant box the panel would resize on every slide and
+              the viewer would jump as you page through. Letterboxing the odd
+              ones out is quieter than a frame that breathes. */}
+          <div className="relative aspect-[16/10] max-h-[68vh] w-full">
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={images[index]}
+                // Absolute so the frame keeps its size while a slide animates
+                // out — otherwise the box collapses between transitions.
+                className="absolute inset-0 flex items-center justify-center"
+                initial={reduce ? false : { opacity: 0, scale: 0.985 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.99 }}
+                transition={{ duration: reduce ? 0 : 0.22, ease: "easeOut" }}
+              >
+                <Image
+                  src={images[index]}
+                  alt={`${title} — screenshot ${index + 1} of ${count}`}
+                  // The screenshots have mixed aspect ratios, so contain keeps
+                  // each frame whole instead of cropping into them.
+                  width={1920}
+                  height={1080}
+                  // These are UI screenshots — flat fills and small type —
+                  // which is the worst case for the optimizer's default lossy
+                  // WebP at quality 75. Small text turns to mush. Raise it;
+                  // the extra bytes buy legibility, and a screenshot that
+                  // can't be read is not worth optimising.
+                  quality={92}
+                  // Tracks the frame: px-4 stage gutter under 640px, px-16
+                  // (4rem) either side above it, then max-w-4xl (896px) once
+                  // the viewport passes ~1152px. Requesting more than this
+                  // made the browser ask for widths the sources don't hold,
+                  // upscaling them.
+                  sizes="(max-width: 640px) calc(100vw - 4rem), (max-width: 1152px) calc(100vw - 10rem), 872px"
+                  priority={index === 0}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         <button
@@ -174,7 +182,7 @@ export default function CaseGallery({
 
       {/* footer — description, counter, filmstrip */}
       <div className="shrink-0 border-t border-line px-5 py-4 sm:px-8">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="mx-auto flex max-w-4xl flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-muted">
             {summary}
           </p>
@@ -187,7 +195,7 @@ export default function CaseGallery({
           </p>
         </div>
 
-        <ul className="mx-auto mt-4 flex max-w-5xl justify-center gap-2">
+        <ul className="mx-auto mt-4 flex max-w-4xl justify-center gap-2">
           {images.map((src, i) => (
             <li key={src}>
               <button
