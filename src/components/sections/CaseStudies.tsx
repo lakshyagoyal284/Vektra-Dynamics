@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import SmartImage from "@/components/ui/SmartImage";
+import CaseGallery from "@/components/ui/CaseGallery";
 import { CASE_STUDIES, CASE_TAGS, type CaseTag } from "@/lib/data";
 
 type Filter = CaseTag | "all";
@@ -17,6 +19,9 @@ const CASE_IMAGES: Record<string, string> = {
 
 export default function CaseStudies() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const openCase = CASE_STUDIES.find((c) => c.id === openId);
 
   const visible =
     filter === "all"
@@ -74,7 +79,9 @@ export default function CaseStudies() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 100, damping: 24 }}
-                className="group relative flex flex-col overflow-hidden border border-line bg-surface-mid transition-colors duration-300 hover:border-accent-cyan/40"
+                className={`group relative flex flex-col overflow-hidden border border-line bg-surface-mid transition-colors duration-300 hover:border-accent-cyan/40 focus-within:border-accent-cyan/60 ${
+                  cs.gallery ? "cursor-pointer" : ""
+                }`}
               >
                 <span
                   aria-hidden="true"
@@ -91,6 +98,18 @@ export default function CaseStudies() {
                   <span className="absolute left-4 top-4 z-10 border border-ink/20 bg-obsidian/80 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-ink/90 backdrop-blur">
                     {String(i + 1).padStart(2, "0")}
                   </span>
+
+                  {cs.gallery && (
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-obsidian/70 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100"
+                    >
+                      <span className="inline-flex items-center gap-2 border border-accent-cyan/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-accent-cyan">
+                        View {cs.gallery.length} screenshots
+                        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </span>
+                    </span>
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
@@ -123,11 +142,33 @@ export default function CaseStudies() {
                     </ul>
                   </div>
                 </div>
+
+                {cs.gallery && (
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(cs.id)}
+                    aria-label={`Open ${cs.gallery.length} screenshots of ${cs.title}`}
+                    className="absolute inset-0 z-20 focus:outline-none"
+                  />
+                )}
               </motion.article>
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {openCase?.gallery && (
+          <CaseGallery
+            key={openCase.id}
+            images={openCase.gallery}
+            title={openCase.title}
+            client={openCase.client}
+            summary={openCase.summary}
+            onClose={() => setOpenId(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

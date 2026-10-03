@@ -304,6 +304,10 @@ export interface CaseStudy {
   readonly metricLabel: string;
   readonly tags: readonly CaseTag[];
   readonly stack: readonly string[];
+  /* Screenshots shown in the expanded viewer. The first entry is also the
+     card's thumbnail. Omit for cases with no artwork — the card then stays
+     non-interactive and shows its placeholder. */
+  readonly gallery?: readonly string[];
 }
 
 export const CASE_TAGS: readonly { id: CaseTag | "all"; label: string }[] = [
@@ -324,6 +328,13 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Online inquiries",
     tags: ["web"],
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    gallery: [
+      "/work/case-diptis.png",
+      "/work/case-diptis-2.png",
+      "/work/case-diptis-3.png",
+      "/work/case-diptis-4.png",
+      "/work/case-diptis-5.png",
+    ],
   },
   {
     id: "helios",
