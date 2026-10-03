@@ -14,9 +14,9 @@ labelled placeholder so the page never looks broken. Drop the files below into
 
 | Path | Service |
 | --- | --- |
-| `public/work/web-platform.webp` | Web Engineering & Architecture |
-| `public/work/custom-systems.webp` | Custom Software & Systems |
-| `public/work/ai-integration.webp` | Intelligent Automation & AI Integration |
+| `public/work/web-platform.png` | Web Engineering & Architecture |
+| `public/work/custom-systems.png` | Custom Software & Systems |
+| `public/work/ai-integration.png` | Intelligent Automation & AI Integration |
 | `public/work/design-systems.webp` | UI/UX Design Systems |
 
 Displayed in a tall left-hand rail, so portrait or square crops work best.

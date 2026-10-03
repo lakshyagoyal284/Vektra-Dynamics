@@ -11,7 +11,7 @@ import { SERVICES } from "@/lib/data";
 const IMAGES: Record<string, string> = {
   "web-engineering": "/work/web-platform.png",
   "custom-software": "/work/custom-systems.png",
-  "ai-integration": "/work/ai-integration.webp",
+  "ai-integration": "/work/ai-integration.png",
   "design-systems": "/work/design-systems.webp",
 };
 
