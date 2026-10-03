@@ -9,6 +9,16 @@ import { CASE_STUDIES, CASE_TAGS, type CaseTag } from "@/lib/data";
 
 type Filter = CaseTag | "all";
 
+/* Supplied artwork, keyed by the CASE_STUDIES id. Anything absent falls back
+   to the documented .webp slot, which SmartImage renders as a placeholder. */
+const CASE_IMAGES: Record<string, string> = {
+  diptis: "/work/case-diptis.png",
+  helios: "/work/case-helios.png",
+  atlas: "/work/case-atlas.png",
+  nordwind: "/work/case-nordwind.png",
+  quantum: "/work/case-quantum.png",
+};
+
 export default function CaseStudies() {
   const [filter, setFilter] = useState<Filter>("all");
 
@@ -77,7 +87,7 @@ export default function CaseStudies() {
 
                 <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line">
                   <SmartImage
-                    src={`/work/case-${cs.id}.webp`}
+                    src={CASE_IMAGES[cs.id] ?? `/work/case-${cs.id}.webp`}
                     alt={`${cs.title} — ${cs.client}`}
                     label={cs.id}
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 360px"
