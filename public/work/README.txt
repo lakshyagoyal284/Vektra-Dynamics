@@ -27,7 +27,7 @@ Minimum 560 × 720.
 | Path | Case study |
 | --- | --- |
 | `public/work/case-diptis.png` | DIPTIS Fitness Website |
-| `public/work/case-helios.webp` | Helios Commerce Replatform |
+| `public/work/case-helios.png` | Helios Commerce Replatform |
 | `public/work/case-atlas.webp` | Atlas Ops Copilot |
 | `public/work/case-nordwind.webp` | Nordwind Booking Engine |
 | `public/work/case-quantum.webp` | Quantum Metrics Platform |

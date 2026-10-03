@@ -340,6 +340,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Speed Increase",
     tags: ["web", "cloud"],
     stack: ["Next.js", "Edge Functions", "PostgreSQL"],
+    gallery: ["/work/case-helios.png"],
   },
   {
     id: "atlas",
