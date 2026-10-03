@@ -16,12 +16,12 @@ interface CaseGalleryProps {
 }
 
 /**
- * Full-screen viewer for a case study's screenshots.
+ * Full-screen viewer for a case study's screenshot.
  *
  * The card thumbnail is the first entry, so opening lands on the image the
- * visitor just clicked rather than jumping to a different frame. Wraps in
- * both directions — these are short decks and a dead end at the last frame
- * feels broken.
+ * visitor just clicked. Paging controls and the counter only render when the
+ * gallery actually holds more than one image — a "01 / 01" readout and arrows
+ * that go nowhere are worse than no control at all.
  *
  * Portalled to <body>: the case study grid uses framer-motion's `layout`,
  * which leaves a transform on the wrapper. A transformed ancestor becomes
@@ -117,14 +117,16 @@ export default function CaseGallery({
 
       {/* stage */}
       <div className="relative flex min-h-0 flex-1 items-center justify-center px-4 py-6 sm:px-16">
-        <button
-          type="button"
-          onClick={() => step(-1)}
-          aria-label="Previous screenshot"
-          className="absolute left-2 z-10 flex h-11 w-11 items-center justify-center border border-line bg-surface-mid/80 text-muted backdrop-blur transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan sm:left-4"
-        >
-          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-        </button>
+        {count > 1 && (
+          <button
+            type="button"
+            onClick={() => step(-1)}
+            aria-label="Previous screenshot"
+            className="absolute left-2 z-10 flex h-11 w-11 items-center justify-center border border-line bg-surface-mid/80 text-muted backdrop-blur transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan sm:left-4"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+          </button>
+        )}
 
         <div className="relative w-full max-w-4xl border border-line bg-surface-deep/40 p-2 sm:p-3">
           {/* Fixed 16:10 frame. The screenshots run from 1.52 to 2.09, so
@@ -145,7 +147,11 @@ export default function CaseGallery({
               >
                 <Image
                   src={images[index]}
-                  alt={`${title} — screenshot ${index + 1} of ${count}`}
+                  alt={
+                    count > 1
+                      ? `${title} — screenshot ${index + 1} of ${count}`
+                      : `${title} — ${client}`
+                  }
                   // The screenshots have mixed aspect ratios, so contain keeps
                   // each frame whole instead of cropping into them.
                   width={1920}
@@ -170,56 +176,34 @@ export default function CaseGallery({
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={() => step(1)}
-          aria-label="Next screenshot"
-          className="absolute right-2 z-10 flex h-11 w-11 items-center justify-center border border-line bg-surface-mid/80 text-muted backdrop-blur transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan sm:right-4"
-        >
-          <ChevronRight className="h-5 w-5" aria-hidden="true" />
-        </button>
+        {count > 1 && (
+          <button
+            type="button"
+            onClick={() => step(1)}
+            aria-label="Next screenshot"
+            className="absolute right-2 z-10 flex h-11 w-11 items-center justify-center border border-line bg-surface-mid/80 text-muted backdrop-blur transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan sm:right-4"
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+          </button>
+        )}
       </div>
 
-      {/* footer — description, counter, filmstrip */}
+      {/* footer */}
       <div className="shrink-0 border-t border-line px-5 py-4 sm:px-8">
         <div className="mx-auto flex max-w-4xl flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-muted">
             {summary}
           </p>
-          <p
-            className="shrink-0 font-mono text-[11px] tracking-[0.18em] text-muted/70"
-            aria-live="polite"
-          >
-            {String(index + 1).padStart(2, "0")} /{" "}
-            {String(count).padStart(2, "0")}
-          </p>
+          {count > 1 && (
+            <p
+              className="shrink-0 font-mono text-[11px] tracking-[0.18em] text-muted/70"
+              aria-live="polite"
+            >
+              {String(index + 1).padStart(2, "0")} /{" "}
+              {String(count).padStart(2, "0")}
+            </p>
+          )}
         </div>
-
-        <ul className="mx-auto mt-4 flex max-w-4xl justify-center gap-2">
-          {images.map((src, i) => (
-            <li key={src}>
-              <button
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Show screenshot ${i + 1}`}
-                aria-current={i === index}
-                className={`block h-10 w-16 overflow-hidden border transition-colors ${
-                  i === index
-                    ? "border-accent-cyan/70"
-                    : "border-line opacity-50 hover:opacity-90"
-                }`}
-              >
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  sizes="64px"
-                  className="object-cover"
-                />
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
     </motion.div>,
     document.body,

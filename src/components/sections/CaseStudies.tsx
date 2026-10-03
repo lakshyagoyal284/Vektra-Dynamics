@@ -105,7 +105,7 @@ export default function CaseStudies() {
                       className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-obsidian/70 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100"
                     >
                       <span className="inline-flex items-center gap-2 border border-accent-cyan/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-accent-cyan">
-                        View {cs.gallery.length} screenshots
+                        View screenshot
                         <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                     </span>
@@ -147,7 +147,7 @@ export default function CaseStudies() {
                   <button
                     type="button"
                     onClick={() => setOpenId(cs.id)}
-                    aria-label={`Open ${cs.gallery.length} screenshots of ${cs.title}`}
+                    aria-label={`Open the ${cs.title} screenshot`}
                     className="absolute inset-0 z-20 focus:outline-none"
                   />
                 )}

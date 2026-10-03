@@ -328,13 +328,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Online inquiries",
     tags: ["web"],
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    gallery: [
-      "/work/case-diptis.png",
-      "/work/case-diptis-2.png",
-      "/work/case-diptis-3.png",
-      "/work/case-diptis-4.png",
-      "/work/case-diptis-5.png",
-    ],
+    gallery: ["/work/case-diptis.png"],
   },
   {
     id: "helios",

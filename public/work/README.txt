@@ -26,8 +26,7 @@ Minimum 560 × 720.
 
 | Path | Case study |
 | --- | --- |
-| `public/work/case-diptis.png` | DIPTIS Fitness Website — card thumbnail, slide 1 |
-| `public/work/case-diptis-2.png` … `-5.png` | DIPTIS Fitness Website — slides 2-5 in the viewer |
+| `public/work/case-diptis.png` | DIPTIS Fitness Website |
 | `public/work/case-helios.webp` | Helios Commerce Replatform |
 | `public/work/case-atlas.webp` | Atlas Ops Copilot |
 | `public/work/case-nordwind.webp` | Nordwind Booking Engine |
@@ -46,6 +45,9 @@ Displayed at 16:10. Minimum 1200 × 750.
 - The case study filenames come from the `id` field in `CASE_STUDIES`
   (`src/lib/data.ts`), so they must match those ids exactly.
 - A case study with a `gallery` array in `CASE_STUDIES` becomes clickable and
-  opens a full-screen slideshow viewer (`src/components/ui/CaseGallery.tsx`).
-  The first entry is the card thumbnail. Cases without a gallery stay
+  opens a full-screen viewer (`src/components/ui/CaseGallery.tsx`). The first
+  entry is the card thumbnail. Add more entries and the viewer's arrows,
+  counter and paging appear automatically; cases without a gallery stay
   non-interactive and show their placeholder.
+- `case-diptis-2.png` … `-5.png` are on disk but unreferenced — leftovers from
+  the five-screenshot slideshow. Add them back to the `gallery` array to use.
