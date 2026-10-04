@@ -376,6 +376,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Event Throughput",
     tags: ["cloud", "web"],
     stack: ["Kubernetes", "Kafka", "TypeScript"],
+    gallery: ["/work/case-quantum.png"],
   },
   {
     id: "lumen",

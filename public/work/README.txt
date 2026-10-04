@@ -30,7 +30,7 @@ Minimum 560 × 720.
 | `public/work/case-helios.png` | Helios Commerce Replatform |
 | `public/work/case-atlas.png` | Atlas Ops Copilot |
 | `public/work/case-nordwind.png` | Nordwind Booking Engine |
-| `public/work/case-quantum.webp` | Quantum Metrics Platform |
+| `public/work/case-quantum.png` | Quantum Metrics Platform |
 | `public/work/case-lumen.webp` | Lumen Health Portal |
 | `public/work/case-vector.webp` | Vector Grid Auto-Scaler |
 
