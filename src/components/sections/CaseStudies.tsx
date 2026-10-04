@@ -20,6 +20,7 @@ const CASE_IMAGES: Record<string, string> = {
   nordwind: "/work/case-nordwind.png",
   quantum: "/work/case-quantum.png",
   lumen: "/work/case-lumen.png",
+  vector: "/work/case-vector.png",
 };
 
 export default function CaseStudies() {

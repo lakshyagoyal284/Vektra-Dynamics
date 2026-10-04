@@ -400,6 +400,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Infra Cost",
     tags: ["cloud", "aiml"],
     stack: ["Python", "K8s", "Time-Series ML"],
+    gallery: ["/work/case-vector.png"],
   },
 ];
 

@@ -32,7 +32,7 @@ Minimum 560 × 720.
 | `public/work/case-nordwind.png` | Nordwind Booking Engine |
 | `public/work/case-quantum.png` | Quantum Metrics Platform |
 | `public/work/case-lumen.png` | Lumen Health Portal |
-| `public/work/case-vector.webp` | Vector Grid Auto-Scaler |
+| `public/work/case-vector.png` | Vector Grid Auto-Scaler |
 
 Displayed at 16:10. Minimum 1200 × 750.
 
