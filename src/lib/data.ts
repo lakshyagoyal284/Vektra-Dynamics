@@ -352,6 +352,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Faster Resolution",
     tags: ["aiml", "cloud"],
     stack: ["LLM Orchestration", "Vector DB", "Python"],
+    gallery: ["/work/case-atlas.png"],
   },
   {
     id: "nordwind",

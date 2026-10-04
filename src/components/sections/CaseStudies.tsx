@@ -16,6 +16,7 @@ type Filter = CaseTag | "all";
 const CASE_IMAGES: Record<string, string> = {
   diptis: "/work/case-diptis.png",
   helios: "/work/case-helios.png",
+  atlas: "/work/case-atlas.png",
 };
 
 export default function CaseStudies() {

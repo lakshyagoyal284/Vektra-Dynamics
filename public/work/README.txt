@@ -28,7 +28,7 @@ Minimum 560 × 720.
 | --- | --- |
 | `public/work/case-diptis.png` | DIPTIS Fitness Website |
 | `public/work/case-helios.png` | Helios Commerce Replatform |
-| `public/work/case-atlas.webp` | Atlas Ops Copilot |
+| `public/work/case-atlas.png` | Atlas Ops Copilot |
 | `public/work/case-nordwind.webp` | Nordwind Booking Engine |
 | `public/work/case-quantum.webp` | Quantum Metrics Platform |
 | `public/work/case-lumen.webp` | Lumen Health Portal |
