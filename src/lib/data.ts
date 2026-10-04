@@ -388,6 +388,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Patient Satisfaction",
     tags: ["web", "aiml"],
     stack: ["Next.js", "tRPC", "Prisma"],
+    gallery: ["/work/case-lumen.png"],
   },
   {
     id: "vector",
