@@ -364,6 +364,7 @@ export const CASE_STUDIES: readonly CaseStudy[] = [
     metricLabel: "Uptime SLA",
     tags: ["web"],
     stack: ["React", "Node.js", "Redis"],
+    gallery: ["/work/case-nordwind.png"],
   },
   {
     id: "quantum",
